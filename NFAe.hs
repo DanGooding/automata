@@ -45,4 +45,4 @@ toDFA m = DFA.DFA
   , DFA.transition = \ qs x -> sort $ consume m qs [x]    -- sort so list equality == set equality
   , DFA.start = epsilonClosure m [start m]
   , DFA.accepting = filter (not . null . intersect (accepting m)) p
-  } where p = powerset $ NFAe.states m
+  } where p = powerset $ states m
