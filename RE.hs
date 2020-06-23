@@ -7,7 +7,6 @@ module RE
   ) where
 
 import NFAe
-import qualified DFA
 
 
 data RE a = Empty                 -- matches the empty string
