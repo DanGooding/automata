@@ -4,6 +4,7 @@ module RE
   , prettyPrint
   , compile
   , matches
+  , Labelled
   ) where
 
 import NFAe
@@ -18,10 +19,10 @@ data RE a = Empty                 -- matches the empty string
   deriving (Show)
 
 
-prettyPrint :: (Show a) => RE a -> String
+prettyPrint :: RE Char -> String
 prettyPrint Empty = ""
-prettyPrint Null = "%"
-prettyPrint (Sym x) = show x
+prettyPrint Null = "<null>"
+prettyPrint (Sym x) = [x]
 prettyPrint (Concat r s) = prettyPrint r ++ prettyPrint s
 prettyPrint (Union r s) = "(" ++ prettyPrint r ++ "|" ++ prettyPrint s ++ ")"
 prettyPrint (Star r) = "(" ++ prettyPrint r ++ ")*"
